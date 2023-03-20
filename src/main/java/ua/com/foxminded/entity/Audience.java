@@ -6,12 +6,15 @@ public class Audience {
 
     private int number;
     private int capacity;
-    private boolean isAvailable;
+    private boolean available;
 
-    public Audience(int number, int capacity, boolean isAvailable) {
+    public Audience(int number, int capacity, boolean available) {
         this.number = number;
         this.capacity = capacity;
-        this.isAvailable = isAvailable;
+        this.available = available;
+    }
+
+    public Audience() {
     }
 
     public int getNumber() {
@@ -31,11 +34,11 @@ public class Audience {
     }
 
     public boolean isAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setAvailable(boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
     @Override
@@ -43,11 +46,11 @@ public class Audience {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Audience audience = (Audience) o;
-        return number == audience.number && capacity == audience.capacity && isAvailable == audience.isAvailable;
+        return number == audience.number && capacity == audience.capacity && available == audience.available;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, capacity, isAvailable);
+        return Objects.hash(number, capacity, available);
     }
 }

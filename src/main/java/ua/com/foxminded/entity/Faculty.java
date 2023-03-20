@@ -19,6 +19,9 @@ public class Faculty {
         this.groups = groups;
     }
 
+    public Faculty() {
+    }
+
     public String getName() {
         return name;
     }

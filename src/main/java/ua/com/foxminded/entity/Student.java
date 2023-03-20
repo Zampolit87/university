@@ -1,5 +1,6 @@
 package ua.com.foxminded.entity;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Student extends Person {
@@ -8,11 +9,15 @@ public class Student extends Person {
     private Group group;
     private Double averageMark;
 
-    public Student(String firstName, String lastName, int id, Group group, Double averageMark) {
-        super(firstName, lastName);
+    public Student(String firstName, String lastName, Address address, String email, String phoneNumber, LocalDate birthDate, Gender gender, int id, Group group, Double averageMark) {
+        super(firstName, lastName, address, email, phoneNumber, birthDate, gender);
         this.id = id;
         this.group = group;
         this.averageMark = averageMark;
+    }
+
+    public Student() {
+
     }
 
     public int getId() {

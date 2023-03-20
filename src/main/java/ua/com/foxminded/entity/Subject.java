@@ -12,6 +12,9 @@ public class Subject {
         this.description = description;
     }
 
+    public Subject() {
+    }
+
     public String getName() {
         return name;
     }

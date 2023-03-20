@@ -24,6 +24,9 @@ public class Lecture {
         this.date = date;
     }
 
+    public Lecture() {
+    }
+
     public int getId() {
         return id;
     }

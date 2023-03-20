@@ -12,6 +12,9 @@ public class LectureTime {
         this.timeEnd = timeEnd;
     }
 
+    public LectureTime() {
+    }
+
     public LocalTime getTimeBegin() {
         return timeBegin;
     }

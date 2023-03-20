@@ -12,6 +12,9 @@ public class Vacation {
         this.dateEnd = dateEnd;
     }
 
+    public Vacation() {
+    }
+
     public LocalDate getDateStart() {
         return dateStart;
     }

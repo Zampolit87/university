@@ -17,6 +17,9 @@ public class Group {
         this.students = students;
     }
 
+    public Group() {
+    }
+
     public String getName() {
         return name;
     }

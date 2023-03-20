@@ -10,11 +10,19 @@ public class Person {
     private String email;
     private String phoneNumber;
     private LocalDate birthDate;
-    private String gender;
+    private Gender gender;
 
-    public Person(String firstName, String lastName) {
+    public Person(String firstName, String lastName, Address address, String email, String phoneNumber, LocalDate birthDate, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.gender = gender;
+    }
+
+    public Person() {
     }
 
     public String getFirstName() {
@@ -65,11 +73,11 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 }
