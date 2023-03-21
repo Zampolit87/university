@@ -8,10 +8,11 @@ import java.util.Scanner;
 
 public class Menu {
 
+    private TeacherService teacherService = new TeacherService();
+    private StudentService studentService = new StudentService();
+    private LectureService lectureService = new LectureService();
+
     public void start() {
-        TeacherService teacherService = new TeacherService();
-        StudentService studentService = new StudentService();
-        LectureService lectureService = new LectureService();
         Scanner input = new Scanner(System.in);
         int option, subOption;
         do {
@@ -22,7 +23,7 @@ public class Menu {
                     do {
                         startSubMenuForTeachers();
                         subOption = input.nextInt();
-                        chooseSubOptionsForTeacher(teacherService, input, subOption);
+                        chooseSubOptionsForTeacher(input, subOption);
                     } while (subOption != 6);
                     break;
                 }
@@ -31,7 +32,7 @@ public class Menu {
                     do {
                         startSubMenuForStudents();
                         subOption = input.nextInt();
-                        chooseSubOptionsForStudent(studentService, input, subOption);
+                        chooseSubOptionsForStudent(input, subOption);
                     } while (subOption != 6);
                     break;
                 }
@@ -40,17 +41,13 @@ public class Menu {
                     do {
                         startSubMenuForLectures();
                         subOption = input.nextInt();
-                        chooseSubOptionsForLecture(lectureService, input, subOption);
+                        chooseSubOptionsForLecture(input, subOption);
                     } while (subOption != 5);
                     break;
 
                 }
-                case 4:
-                    System.out.println("You selected to Exit");
-                    System.exit(0);
-                    break;
             }
-        } while (option != 6);
+        } while (option != 4);
     }
 
     public void startMainMenu() {
@@ -90,7 +87,7 @@ public class Menu {
         System.out.println("5. Exit");
     }
 
-    public void chooseSubOptionsForTeacher(TeacherService teacherService, Scanner input, int subOption) {
+    public void chooseSubOptionsForTeacher(Scanner input, int subOption) {
         switch (subOption) {
             case 1: {
                 System.out.println("Create a Teacher");
@@ -104,7 +101,7 @@ public class Menu {
             }
             case 3: {
                 System.out.println("Delete a Teacher");
-                teacherService.deleteByID(input.nextInt());
+                teacherService.delete(input.nextInt());
             }
             case 4: {
                 System.out.println("Read All Teachers");
@@ -123,7 +120,7 @@ public class Menu {
         }
     }
 
-    public void chooseSubOptionsForStudent(StudentService studentService, Scanner input, int subOption) {
+    public void chooseSubOptionsForStudent(Scanner input, int subOption) {
         switch (subOption) {
             case 1: {
                 System.out.println("Create a Student");
@@ -137,7 +134,7 @@ public class Menu {
             }
             case 3: {
                 System.out.println("Delete a Student");
-                studentService.deleteByID(input.nextInt());
+                studentService.delete(input.nextInt());
                 break;
             }
             case 4: {
@@ -157,7 +154,7 @@ public class Menu {
         }
     }
 
-    public void chooseSubOptionsForLecture(LectureService lectureService, Scanner input, int subOption) {
+    public void chooseSubOptionsForLecture(Scanner input, int subOption) {
         switch (subOption) {
             case 1: {
                 System.out.println("Add a lecture");

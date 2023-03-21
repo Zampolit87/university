@@ -108,7 +108,7 @@ public class StudentService {
         });
     }
 
-    public void deleteByID(int id) {
+    public void delete(int id) {
         if (students.isEmpty()) {
             System.out.println("No students here");
         }
