@@ -52,6 +52,9 @@ public class StudentService {
         Group group = new Group();
         group.setName(input.next());
         student.setGroup(group);
+
+        students.add(student);
+        System.out.println("Student added!");
     }
 
     public void updateStudent(Scanner input) {

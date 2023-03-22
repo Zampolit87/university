@@ -39,6 +39,7 @@ public class LectureService {
         System.out.println("Groups:");
         addGroups(input);
 
+        lectures.add(lecture);
         System.out.println("Lecture added!");
     }
 

@@ -57,6 +57,7 @@ public class TeacherService {
         System.out.println("Vacations:");
         addVacations(input);
 
+        teachers.add(teacher);
         System.out.println("New teacher added!");
     }
 
