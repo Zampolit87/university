@@ -11,43 +11,57 @@ public class Menu {
     private TeacherService teacherService = new TeacherService();
     private StudentService studentService = new StudentService();
     private LectureService lectureService = new LectureService();
+    private Scanner input = new Scanner(System.in);
 
     public void start() {
-        Scanner input = new Scanner(System.in);
-        int option, subOption;
+        int option;
         do {
             startMainMenu();
             option = input.nextInt();
             switch (option) {
                 case 1: {
-                    do {
-                        startSubMenuForTeachers();
-                        subOption = input.nextInt();
-                        chooseSubOptionsForTeacher(input, subOption);
-                    } while (subOption != 6);
+                    processTeacherMenu();
                     break;
                 }
 
                 case 2: {
-                    do {
-                        startSubMenuForStudents();
-                        subOption = input.nextInt();
-                        chooseSubOptionsForStudent(input, subOption);
-                    } while (subOption != 6);
+                    processStudentMenu();
                     break;
                 }
 
                 case 3: {
-                    do {
-                        startSubMenuForLectures();
-                        subOption = input.nextInt();
-                        chooseSubOptionsForLecture(input, subOption);
-                    } while (subOption != 5);
+                    processLectureMenu();
                     break;
-
                 }
             }
         } while (option != 4);
+    }
+
+    private void processLectureMenu() {
+        int subOption;
+        do {
+            startSubMenuForLectures();
+            subOption = input.nextInt();
+            chooseSubOptionsForLecture(subOption);
+        } while (subOption != 5);
+    }
+
+    private void processStudentMenu() {
+        int subOption;
+        do {
+            startSubMenuForStudents();
+            subOption = input.nextInt();
+            chooseSubOptionsForStudent(subOption);
+        } while (subOption != 6);
+    }
+
+    private void processTeacherMenu() {
+        int subOption;
+        do {
+            startSubMenuForTeachers();
+            subOption = input.nextInt();
+            chooseSubOptionsForTeacher(subOption);
+        } while (subOption != 6);
     }
 
     public void startMainMenu() {
@@ -87,7 +101,7 @@ public class Menu {
         System.out.println("5. Exit");
     }
 
-    public void chooseSubOptionsForTeacher(Scanner input, int subOption) {
+    public void chooseSubOptionsForTeacher(int subOption) {
         switch (subOption) {
             case 1: {
                 System.out.println("Create a Teacher");
@@ -102,6 +116,7 @@ public class Menu {
             case 3: {
                 System.out.println("Delete a Teacher");
                 teacherService.delete(input.nextInt());
+                break;
             }
             case 4: {
                 System.out.println("Read All Teachers");
@@ -120,7 +135,7 @@ public class Menu {
         }
     }
 
-    public void chooseSubOptionsForStudent(Scanner input, int subOption) {
+    public void chooseSubOptionsForStudent(int subOption) {
         switch (subOption) {
             case 1: {
                 System.out.println("Create a Student");
@@ -154,7 +169,7 @@ public class Menu {
         }
     }
 
-    public void chooseSubOptionsForLecture(Scanner input, int subOption) {
+    public void chooseSubOptionsForLecture(int subOption) {
         switch (subOption) {
             case 1: {
                 System.out.println("Add a lecture");
@@ -168,7 +183,7 @@ public class Menu {
             }
             case 3: {
                 System.out.println("Delete lecture");
-                lectureService.deleteByID(input.nextInt());
+                lectureService.delete(input.nextInt());
                 break;
             }
             case 4: {

@@ -118,8 +118,8 @@ public class TeacherService {
         if (teachers.isEmpty()) {
             System.out.println("No teachers here");
         }
-        teachers.stream().filter(s -> s.getId() == id).findAny().ifPresent(s -> {
-            System.out.println(s.getFirstName() + " " + s.getLastName());
+        teachers.stream().filter(t -> t.getId() == id).findAny().ifPresent(t -> {
+            System.out.println(t.getFirstName() + " " + t.getLastName());
         });
     }
 
@@ -127,7 +127,7 @@ public class TeacherService {
         if (teachers.isEmpty()) {
             System.out.println("No teachers here");
         }
-        teachers.removeIf(s -> s.getId() == id);
+        teachers.removeIf(t -> t.getId() == id);
     }
 
     public void showAllTeachers() {
@@ -138,7 +138,7 @@ public class TeacherService {
         teachers.forEach(s -> System.out.println(count.incrementAndGet() + ". " + s.getFirstName() + " " + s.getLastName()));
     }
 
-    private List<Subject> addSubjects(Scanner input) {
+    private static List<Subject> addSubjects(Scanner input) {
         List<Subject> subjects = new ArrayList<>();
         do {
             Subject subject = new Subject();
@@ -150,7 +150,7 @@ public class TeacherService {
         return subjects;
     }
 
-    private List<Vacation> addVacations(Scanner input) {
+    private static List<Vacation> addVacations(Scanner input) {
         List<Vacation> vacations = new ArrayList<>();
         do {
             Vacation vacation = new Vacation();

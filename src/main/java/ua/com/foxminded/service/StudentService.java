@@ -4,12 +4,12 @@ import ua.com.foxminded.entity.Address;
 import ua.com.foxminded.entity.Group;
 import ua.com.foxminded.entity.Student;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.time.LocalDate.parse;
 import static ua.com.foxminded.entity.Gender.valueOf;
 
 public class StudentService {
@@ -28,7 +28,7 @@ public class StudentService {
         System.out.println("Phone number:");
         student.setPhoneNumber(input.next());
         System.out.println("Birth date:");
-        student.setBirthDate(parse(input.next()));
+        student.setBirthDate(LocalDate.parse(input.next()));
         System.out.println("Gender:");
         student.setGender(valueOf(input.next()));
         System.out.println("AverageMark:");
@@ -71,7 +71,7 @@ public class StudentService {
                     System.out.println("Phone number:");
                     student.setPhoneNumber(input.next());
                     System.out.println("Birth date:");
-                    student.setBirthDate(parse(input.next()));
+                    student.setBirthDate(LocalDate.parse(input.next()));
                     System.out.println("Gender:");
                     student.setGender(valueOf(input.next()));
                     System.out.println("AverageMark:");

@@ -18,77 +18,83 @@ public class LectureService {
         System.out.println("What subject?");
         Subject subject = new Subject();
         subject.setName(input.next());
+
         System.out.println("What audience number?");
         Audience audience = new Audience();
         audience.setNumber(input.nextInt());
+
         System.out.println("Enter teacher's name");
         Teacher teacher = new Teacher();
         teacher.setFirstName(input.next());
+
         System.out.println("Enter date");
         lecture.setDate(LocalDate.parse(input.next()));
+
         System.out.println("Enter lecture's start time");
         LectureTime lectureTime = new LectureTime();
         lectureTime.setTimeBegin(LocalTime.parse(input.next()));
         System.out.println("Enter lecture's end time");
         lectureTime.setTimeEnd(LocalTime.parse(input.next()));
+
+        System.out.println("Groups:");
+        addGroups(input);
+
+        System.out.println("Lecture added!");
+    }
+
+    private static List<Group> addGroups(Scanner input) {
         List<Group> groups = new ArrayList<>();
-        while (true) {
+        do {
             Group group = new Group();
             System.out.println("Enter new group name:");
             group.setName(input.next());
             groups.add(group);
             System.out.println("Add another group?");
-            if (input.next().equalsIgnoreCase("no")) {
-                break;
-            }
-        }
+        } while (input.next().equals("yes"));
+        return groups;
     }
 
     public void updateLecture(Scanner input) {
         if (lectures.isEmpty()) {
-            System.out.println("No students here");
+            System.out.println("No lectures here");
         }
         lectures.stream()
-                .filter(student -> student.getId() == input.nextInt())
-                .findAny()
-                .ifPresent(student -> {
-                    Lecture lecture = new Lecture();
-                    System.out.println("What subject?");
-                    Subject subject = new Subject();
-                    subject.setName(input.next());
-                    System.out.println("What audience number?");
-                    Audience audience = new Audience();
-                    audience.setNumber(input.nextInt());
-                    System.out.println("Enter teacher's name");
-                    Teacher teacher = new Teacher();
-                    teacher.setFirstName(input.next());
-                    System.out.println("Enter date");
-                    lecture.setDate(LocalDate.parse(input.next()));
-                    System.out.println("Enter lecture's start time");
-                    LectureTime lectureTime = new LectureTime();
-                    lectureTime.setTimeBegin(LocalTime.parse(input.next()));
-                    System.out.println("Enter lecture's end time");
-                    lectureTime.setTimeEnd(LocalTime.parse(input.next()));
-                    List<Group> groups = new ArrayList<>();
-                    while (true) {
-                        Group group = new Group();
-                        System.out.println("Enter new group name:");
-                        group.setName(input.next());
-                        groups.add(group);
-                        System.out.println("Add another group?");
-                        if (input.next().equalsIgnoreCase("no")) {
-                            break;
-                        }
-                    }
-                });
+            .filter(l -> l.getId() == input.nextInt())
+            .findAny()
+            .ifPresent(l -> {
+                Lecture lecture = new Lecture();
+
+                System.out.println("What subject?");
+                Subject subject = new Subject();
+                subject.setName(input.next());
+
+                System.out.println("What audience number?");
+                Audience audience = new Audience();
+                audience.setNumber(input.nextInt());
+
+                System.out.println("Enter teacher's name");
+                Teacher teacher = new Teacher();
+                teacher.setFirstName(input.next());
+
+                System.out.println("Enter date");
+                lecture.setDate(LocalDate.parse(input.next()));
+
+                System.out.println("Enter lecture's start time");
+                LectureTime lectureTime = new LectureTime();
+                lectureTime.setTimeBegin(LocalTime.parse(input.next()));
+                System.out.println("Enter lecture's end time");
+                lectureTime.setTimeEnd(LocalTime.parse(input.next()));
+
+                addGroups(input);
+            });
         System.out.println("Lecture updated");
     }
 
-    public void deleteByID(int id) {
+    public void delete(int id) {
         if (lectures.isEmpty()) {
             System.out.println("No lectures here");
         }
-        lectures.removeIf(s -> s.getId() == id);
+        lectures.removeIf(l -> l.getId() == id);
     }
 
     public void showAllLectures() {
